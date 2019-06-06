@@ -96,24 +96,18 @@
 
 
 
-  <meta name="description" content="1.什么是BST树Bst树又名二分搜索树，binary search tree，它是遵循一定规律的二叉树；  1.二分搜索树是二叉树； 2.二分搜索树每个节点的值：a.大于其左子树所有节点的值；b.小于其右子树所有节点的值； 3.每一棵子树也是二分搜索树；  如图： 就是说每往一个根节点添加元素时，左孩子要比根节点小，右孩子要比根节点大，不允许元素重复（可选项）； 2.手写一个基本的BST树下面开">
+  <meta name="description" content="1.前言前一篇我们对BST树做了一个入门，这一篇我们来对BST树找后继节点做个学习，为什么要学这个，因为后面再做删除节点的时候会用到这个知识点。废话不多说，直接开始。 前驱后继节点针对的是树的三种遍历模式下各个节点在不同排列顺序下的位置关系。比如树A在先序遍历下的排列顺序是{3 5 8 7 6}，3是5的前驱节点，8是5的后继节点。 但是说前中后序三种遍历方式都有各自的前驱后继节点找法。 本文只讨">
 <meta name="keywords" content="树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="bst-tree_后继节点">
-<meta property="og:url" content="http://yoursite.com/2019/06/06/Bst-Tree_后继节点/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/06/06/bst-tree_后继节点/index.html">
 <meta property="og:site_name" content="Red Dragon">
-<meta property="og:description" content="1.什么是BST树Bst树又名二分搜索树，binary search tree，它是遵循一定规律的二叉树；  1.二分搜索树是二叉树； 2.二分搜索树每个节点的值：a.大于其左子树所有节点的值；b.小于其右子树所有节点的值； 3.每一棵子树也是二分搜索树；  如图： 就是说每往一个根节点添加元素时，左孩子要比根节点小，右孩子要比根节点大，不允许元素重复（可选项）； 2.手写一个基本的BST树下面开">
+<meta property="og:description" content="1.前言前一篇我们对BST树做了一个入门，这一篇我们来对BST树找后继节点做个学习，为什么要学这个，因为后面再做删除节点的时候会用到这个知识点。废话不多说，直接开始。 前驱后继节点针对的是树的三种遍历模式下各个节点在不同排列顺序下的位置关系。比如树A在先序遍历下的排列顺序是{3 5 8 7 6}，3是5的前驱节点，8是5的后继节点。 但是说前中后序三种遍历方式都有各自的前驱后继节点找法。 本文只讨">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxlgub27ryj30db08sdi5.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fxll4e1q30j30tc1r40vk.jpg">
-<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1fxlltzuvqcj30uc0foao8.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fxll4e1q30j30tc1r40vk.jpg">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwly1fxll4e1q30j30tc1r40vk.jpg">
-<meta property="og:updated_time" content="2019-06-06T07:47:56.317Z">
+<meta property="og:updated_time" content="2019-06-06T08:09:58.155Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bst-tree_后继节点">
-<meta name="twitter:description" content="1.什么是BST树Bst树又名二分搜索树，binary search tree，它是遵循一定规律的二叉树；  1.二分搜索树是二叉树； 2.二分搜索树每个节点的值：a.大于其左子树所有节点的值；b.小于其右子树所有节点的值； 3.每一棵子树也是二分搜索树；  如图： 就是说每往一个根节点添加元素时，左孩子要比根节点小，右孩子要比根节点大，不允许元素重复（可选项）； 2.手写一个基本的BST树下面开">
-<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tNbRwly1fxlgub27ryj30db08sdi5.jpg">
+<meta name="twitter:description" content="1.前言前一篇我们对BST树做了一个入门，这一篇我们来对BST树找后继节点做个学习，为什么要学这个，因为后面再做删除节点的时候会用到这个知识点。废话不多说，直接开始。 前驱后继节点针对的是树的三种遍历模式下各个节点在不同排列顺序下的位置关系。比如树A在先序遍历下的排列顺序是{3 5 8 7 6}，3是5的前驱节点，8是5的后继节点。 但是说前中后序三种遍历方式都有各自的前驱后继节点找法。 本文只讨">
 
 
 
@@ -121,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/06/06/Bst-Tree_后继节点/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/06/bst-tree_后继节点/">
 
 
 
@@ -219,7 +213,7 @@
         
         
           
-          <li class="menu-item menu-item-首页">
+          <li class="menu-item menu-item-归档">
 
     
     
@@ -229,7 +223,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>首页</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
   </li>
         
@@ -270,7 +264,7 @@
         
         
           
-          <li class="menu-item menu-item-关于我">
+          <li class="menu-item menu-item-关于">
 
     
     
@@ -280,7 +274,7 @@
 
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于我</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
 
@@ -332,7 +326,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/06/Bst-Tree_后继节点/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/06/bst-tree_后继节点/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Red Dragon">
@@ -375,7 +369,7 @@
                 
               
 
-              <time title="Created: 2019-06-06 14:09:44 / Modified: 15:47:56" itemprop="dateCreated datePublished" datetime="2019-06-06T14:09:44+08:00">2019-06-06</time>
+              <time title="Created: 2019-06-06 14:09:44 / Modified: 16:09:58" itemprop="dateCreated datePublished" datetime="2019-06-06T14:09:44+08:00">2019-06-06</time>
             
 
             
@@ -432,424 +426,130 @@
       
 
       
-        <h2 id="1-什么是BST树"><a href="#1-什么是BST树" class="headerlink" title="1.什么是BST树"></a>1.什么是BST树</h2><p>Bst树又名二分搜索树，binary search tree，它是遵循一定规律的二叉树；</p>
-<ul>
-<li>1.二分搜索树是二叉树；</li>
-<li>2.二分搜索树每个节点的值：<br>a.大于其左子树所有节点的值；<br>b.小于其右子树所有节点的值；</li>
-<li>3.每一棵子树也是二分搜索树；</li>
-</ul>
-<p>如图：<br><img src="https://ws2.sinaimg.cn/large/006tNbRwly1fxlgub27ryj30db08sdi5.jpg" alt></p>
-<p>就是说每往一个根节点添加元素时，左孩子要比根节点小，右孩子要比根节点大，不允许元素重复（可选项）；</p>
-<h2 id="2-手写一个基本的BST树"><a href="#2-手写一个基本的BST树" class="headerlink" title="2.手写一个基本的BST树"></a>2.手写一个基本的BST树</h2><p>下面开始用java写一个Bst树，主要分为几步：</p>
-<ul>
-<li>基本节点</li>
-<li>add元素流程</li>
-<li>query元素流程 //todo</li>
-<li>遍历（先中后序）</li>
-<li>删除元素 //todo</li>
-</ul>
-<p>另外补充下：为何说是”基本的”，因为还存在可优化的情况，但是不揉在一起，先把最基本的怼出来，下一小节再来考虑优化问题（基本流程，递归）；</p>
-<h3 id="2-1-定义基本节点"><a href="#2-1-定义基本节点" class="headerlink" title="2.1.定义基本节点"></a>2.1.定义基本节点</h3><p>定义好左孩子右孩子，根节点；</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BinarySearchTree</span><span class="token operator">&lt;</span>T <span class="token keyword">extends</span> <span class="token class-name">Comparable</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h2><p><a href="https://blog.csdn.net/user11223344abc/article/details/84556070" target="_blank" rel="noopener">前一篇我们对BST树做了一个入门，</a>这一篇我们来对BST树找后继节点做个学习，为什么要学这个，因为后面再做删除节点的时候会用到这个知识点。废话不多说，直接开始。</p>
+<p>前驱后继节点针对的是树的三种遍历模式下各个节点在不同排列顺序下的位置关系。比如树A在先序遍历下的排列顺序是{3 5 8 7 6}，3是5的前驱节点，8是5的后继节点。</p>
+<p>但是说前中后序三种遍历方式都有各自的前驱后继节点找法。</p>
+<p>本文只讨论以<strong>BST树以中序遍历找后继节点</strong>为例当做一个入门，更多相关的知识请自行google。</p>
+<p>另外本文如有错误请直接指出，感谢。</p>
+<h2 id="2-如何寻找后继节点？"><a href="#2-如何寻找后继节点？" class="headerlink" title="2.如何寻找后继节点？"></a>2.如何寻找后继节点？</h2><h3 id="2-0：这个树："><a href="#2-0：这个树：" class="headerlink" title="2.0：这个树："></a>2.0：这个树：</h3><pre class=" language-xml"><code class="language-xml">
+50 
+/   \
+29     77
+/  \     \
+8   44     82
+/ \         /\
+2  10       80 99
+/\    \
+1  5   11
+/      \
+4       12
+/          \
+3           13</code></pre>
+<p>后继节点是什么意思？比如这棵树用中序遍历列出来是如下数列：</p>
+<pre class=" language-java"><code class="language-java">「 <span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span> <span class="token number">4</span> <span class="token number">5</span> <span class="token number">8</span> <span class="token number">10</span> <span class="token number">11</span> <span class="token number">12</span> <span class="token number">13</span> <span class="token number">29</span> <span class="token number">44</span> <span class="token number">50</span> <span class="token number">77</span> <span class="token number">82</span> 」</code></pre>
+<p>8的后继节点就是10，29后继节点就是44，82的后继节点就是null；</p>
+<p>但是我们要如何取出某个节点的后继节点呢？不可能每次都去遍历存个集合取相邻元素吧，这样是不科学的。</p>
+<h3 id="2-1-那么科学的姿势是："><a href="#2-1-那么科学的姿势是：" class="headerlink" title="2.1.那么科学的姿势是："></a>2.1.<strong>那么科学的姿势是：</strong></h3><p>1：<strong>如果node结点有右子树，返回该右子树上的最小值</strong>（即挂在该右子树上的左子树的最深元素）<strong>若没有左子树则返回该元素本身</strong>（因其右子树肯定比其本身要大））</p>
+<blockquote>
+<p>比如77，它有右子树82，返回82这棵树上的最小值，由于82这棵树上没有左子树，所以其最小值就是其本身，所以77的后继节点为82</p>
+</blockquote>
+<p>2：如果node结点没有右子树，那么要分两种情况: </p>
+<blockquote>
+<p>a&gt;如果node结点没有右子树,判断当前结点node是不是它父亲的左孩子，如果是，那么它父亲就是它的后继；<br>比如：1，它首先没有右子树，然后当前节点1又是它父亲的左孩子，所以它的后继就是它的父亲2.</p>
+</blockquote>
+<blockquote>
+<p>b&gt;如果node结点没有右子树,判断当前结点是不是它父亲的右孩子，如果是，那么一路往父节点方向回溯，直到找到某一个父节点(ParentA)是其自己父节点(ParentA’s Fathter)的左子树，那么这个ParentA’s Fathter就是当前节点Node的后继节点<br>比如：13，它没有右子树，且是它自己父节点（12）的右孩子，那么开始回溯，回溯到它的父节点12，12并非它自己父节点的左子树，于是继续回溯，11，11也不是它自己父节点的左子树，于是再回溯，10，同样不是，再回溯，8是它自己父节点(29)的左子树，这里的8相当于上面说的”某个父节点ParentA”，这里的29相当于上面说的PaerentA’s Father，所以由此可以推出29是13的后继节点。</p>
+</blockquote>
+<h2 id="3-代码怎么写？"><a href="#3-代码怎么写？" class="headerlink" title="3.代码怎么写？"></a>3.代码怎么写？</h2><p>说了这么多还是要落实到代码上。</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+* 获取指定元素的后继节点
+* @return
+*/</span>
+<span class="token keyword">public</span> Node <span class="token function">getSuccessorNode</span><span class="token punctuation">(</span>BinarySearchTree<span class="token punctuation">.</span>Node node<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-Node root<span class="token punctuation">;</span>
-<span class="token keyword">int</span> size<span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span>node <span class="token operator">==</span> null<span class="token punctuation">)</span>
+<span class="token keyword">return</span> null<span class="token punctuation">;</span>
 
-<span class="token keyword">class</span> <span class="token class-name">Node</span> <span class="token punctuation">{</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>right <span class="token operator">==</span> null<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment" spellcheck="true">//如果该节点没有右子树,那么要分两种情况:</span>
+<span class="token comment" spellcheck="true">//a>如果node结点没有右子树,判断当前结点node是不是它父亲的左孩子，如果是，那么它父亲就是它的后继；</span>
+<span class="token comment" spellcheck="true">//比如：1，它首先没有右子树，然后当前节点1又是它父亲的左孩子，所以它的后继就是它的父亲2.</span>
 
-Node left<span class="token punctuation">;</span>
-Node right<span class="token punctuation">;</span>
-T value <span class="token operator">=</span> null<span class="token punctuation">;</span>
-
-<span class="token keyword">public</span> <span class="token function">Node</span><span class="token punctuation">(</span>T value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">=</span> value<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token punctuation">}</span>
-
-<span class="token punctuation">}</span></code></pre>
-<h3 id="2-2-add元素流程"><a href="#2-2-add元素流程" class="headerlink" title="2.2.add元素流程"></a>2.2.add元素流程</h3><p>1.如果root为空则直接new一个，并将值添加给该节点；<br>2.如果不为空，则将值添加进节点，根据之前描述的二分搜索树的特性，左孩子比根小，右孩子比根大，那么就涉及对比（这里用的java泛型+比较器的方式），那么就需要另开一个函数接受一个Node和新传进来的值进行对比，就是下面代码的私有方法<code>nodeadd()</code>；</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fxll4e1q30j30tc1r40vk.jpg" alt></p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BinarySearchTree</span><span class="token operator">&lt;</span>T <span class="token keyword">extends</span> <span class="token class-name">Comparable</span><span class="token operator">></span> <span class="token punctuation">{</span>
-
-<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-
-<span class="token keyword">class</span> <span class="token class-name">Node</span> <span class="token punctuation">{</span>
-<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span>T value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-<span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-root <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//1</span>
-size<span class="token operator">++</span><span class="token punctuation">;</span>
-<span class="token keyword">return</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>null <span class="token operator">!=</span> node<span class="token punctuation">.</span>parent<span class="token punctuation">.</span>left <span class="token operator">&amp;&amp;</span> node<span class="token punctuation">.</span>parent<span class="token punctuation">.</span>left<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">compareTo</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>value<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//node是不是它父亲的左孩子</span>
+<span class="token comment" spellcheck="true">//那么它父亲就是它的后继；</span>
+<span class="token keyword">return</span> node<span class="token punctuation">.</span>parent<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>null <span class="token operator">!=</span> node<span class="token punctuation">.</span>parent<span class="token punctuation">.</span>right <span class="token operator">&amp;&amp;</span> node<span class="token punctuation">.</span>parent<span class="token punctuation">.</span>right<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">compareTo</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>value<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//b>如果node结点没有右子树, 判断当前结点是不是它父亲的右孩子，</span>
+<span class="token keyword">return</span> <span class="token function">getParentFather</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-<span class="token function">nodeAdd</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//2</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"异常：getSuccessorNode"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
+<span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//如果该节点有右子树</span>
+<span class="token comment" spellcheck="true">//返回该右子树上的最小值（即左子树的最深元素）若没有左子树则返回该元素本身（因其右子树肯定比其本身要大））</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>right<span class="token punctuation">.</span>left <span class="token operator">==</span> null<span class="token punctuation">)</span>
+<span class="token keyword">return</span> node<span class="token punctuation">.</span>right<span class="token punctuation">;</span>
+
+<span class="token keyword">return</span> <span class="token function">getLeftMost</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>right<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">/**
-* @param currNode 当前根节点
-* @param newValue 新插入元素
-*/</span>
-<span class="token comment" spellcheck="true">/**
-* 二分搜索树每个节点的值：
-* a.大于其左子树所有节点的值；
-* b.小于其右子树所有节点的值；
-*/</span>
-<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">nodeAdd</span><span class="token punctuation">(</span>Node currRoot<span class="token punctuation">,</span> T newValue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-<span class="token comment" spellcheck="true">//无重复元素</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span>currRoot<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">compareTo</span><span class="token punctuation">(</span>newValue<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<span class="token keyword">return</span><span class="token punctuation">;</span>
+<span class="token keyword">return</span> null<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">//compareTo 前一个元素和后一个元素比较--返回整数，1，0,-1；返回1表示大于，返回-1表示小于，返回0表示相等；</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span>currRoot<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">compareTo</span><span class="token punctuation">(</span>newValue<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//左插</span>
+<span class="token comment" spellcheck="true">//返回该右子树上的最小值（即左子树的最深元素）</span>
+<span class="token keyword">private</span> Node <span class="token function">getLeftMost</span><span class="token punctuation">(</span>Node node<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-<span class="token comment" spellcheck="true">//当前根节点大于插入值，且当前根节点的左子树为空，所以该值应该插入左子树</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span>currRoot<span class="token punctuation">.</span>left <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-currRoot<span class="token punctuation">.</span>left <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span>newValue<span class="token punctuation">)</span><span class="token punctuation">;</span>
-size<span class="token operator">++</span><span class="token punctuation">;</span>
-<span class="token keyword">return</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-<span class="token comment" spellcheck="true">//当前根节点大于插入值，且当前根节点的左子树不为空，则递归到一次的左子树查询当中去</span>
-<span class="token function">nodeAdd</span><span class="token punctuation">(</span>currRoot<span class="token punctuation">.</span>left<span class="token punctuation">,</span> newValue<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//递归</span>
-<span class="token punctuation">}</span>
-<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>currRoot<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">compareTo</span><span class="token punctuation">(</span>newValue<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//右插</span>
-
-<span class="token comment" spellcheck="true">//右插同理左插</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span>currRoot<span class="token punctuation">.</span>right <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-currRoot<span class="token punctuation">.</span>right <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span>newValue<span class="token punctuation">)</span><span class="token punctuation">;</span>
-size<span class="token operator">++</span><span class="token punctuation">;</span>
-<span class="token keyword">return</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-<span class="token function">nodeAdd</span><span class="token punctuation">(</span>currRoot<span class="token punctuation">.</span>right<span class="token punctuation">,</span> newValue<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//递归</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>left <span class="token operator">==</span> null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token keyword">return</span> node<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-<span class="token punctuation">}</span>
-
-<span class="token punctuation">}</span>
-
-<span class="token punctuation">}</span></code></pre>
-<h3 id="2-3-add流程优化"><a href="#2-3-add流程优化" class="headerlink" title="2.3.add流程优化"></a>2.3.add流程优化</h3><pre class=" language-java"><code class="language-java"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-
-<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">nodeAdd</span><span class="token punctuation">(</span>Node currRoot<span class="token punctuation">,</span> T newValue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-<span class="token keyword">if</span> <span class="token punctuation">(</span>currRoot<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">compareTo</span><span class="token punctuation">(</span>newValue<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//左插</span>
-
-<span class="token comment" spellcheck="true">//当前根节点大于插入值，且当前根节点的左子树为空，所以该值应该插入左子树</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span>currRoot<span class="token punctuation">.</span>left <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-currRoot<span class="token punctuation">.</span>left <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span>newValue<span class="token punctuation">)</span><span class="token punctuation">;</span>
-size<span class="token operator">++</span><span class="token punctuation">;</span>
-<span class="token keyword">return</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-<span class="token comment" spellcheck="true">//当前根节点大于插入值，且当前根节点的左子树不为空，则递归到一次的左子树查询当中去</span>
-<span class="token function">nodeAdd</span><span class="token punctuation">(</span>currRoot<span class="token punctuation">.</span>left<span class="token punctuation">,</span> newValue<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//递归</span>
-<span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token punctuation">}</span>
-
-<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-</code></pre>
-<p><strong>问题出在哪？为什么要优化？要优化哪儿？</strong><br>1.终止条件臃肿<br>2.外部干预，外层调用的add方法会初始化树根节点root<br>3.没有访问到null节点（在访问之前就已经进行了判断）<br>综合起来就是”不美”；     (“▔㉨▔)!</p>
-<p><strong>优化思路</strong><br>主要解决矛盾：解除外部干预，终止条件简化；<br>考虑方向：让元素先到空节点，如果是空节点必然就插入元素作为新根，否则再进行递归<br>产生的问题：树结构的维护；</p>
-<p><strong>具体实现</strong></p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span>T value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-root <span class="token operator">=</span> <span class="token function">nodeAdd</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">/**
-* @param currRoot 当前根节点
-* @param newValue 新插入元素
-*/</span>
-<span class="token keyword">private</span> Node <span class="token function">nodeAdd</span><span class="token punctuation">(</span>Node currRoot<span class="token punctuation">,</span> T newValue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-<span class="token keyword">if</span><span class="token punctuation">(</span>currRoot <span class="token operator">==</span> null<span class="token punctuation">)</span><span class="token punctuation">{</span>
-size<span class="token operator">++</span><span class="token punctuation">;</span>
-<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span>newValue<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-
-<span class="token keyword">if</span> <span class="token punctuation">(</span>currRoot<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">compareTo</span><span class="token punctuation">(</span>newValue<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//左插</span>
-？<span class="token operator">=</span>  <span class="token function">nodeAdd</span><span class="token punctuation">(</span>currRoot<span class="token punctuation">.</span>left<span class="token punctuation">,</span> newValue<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//1</span>
-<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>currRoot<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">compareTo</span><span class="token punctuation">(</span>newValue<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//右插</span>
-？<span class="token operator">=</span>  <span class="token function">nodeAdd</span><span class="token punctuation">(</span>currRoot<span class="token punctuation">.</span>right<span class="token punctuation">,</span> newValue<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//递归</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">return</span> currRoot<span class="token punctuation">;</span>
-
-<span class="token punctuation">}</span></code></pre>
-<p>如上代码是个未完成的代码，主要体现问题所在，主要是递归的时候返回根节点并没有和整棵树关联起来，比如：</p>
-<ul>
-<li>第一个元素进去，5，树根为空，new了一个Node返回并赋值给root，这一步没问题；</li>
-<li>第二个元素进去，1，树根是5不为空，判断为左插，这时候递归就有问题</li>
-</ul>
-<p>啥问题？看注释1处，nodeAdd(currRoot.left, newValue),currRoot是5的left，为空，在递归调用中会新创建一个Node，这个Node返回给的是递归之前的函数，也就是说，它仅仅创建了一个对象，而这个对象并没有挂载到整棵树上；在该函数末尾return到currRoot5实际上本该插入的子树却没有插入，到下一个元素进来判断它的左子树还是为空;</p>
-<p>之前不出问题是因为，之前的root是全局变量，它创建新node的时候就可以做子树关联，而这个写法在它递归时找到null节点创建的节点没有做父节点关联；</p>
-<p>那么要做关联该怎么做？递归调用时遇见null元素返回的地方就是注释1处，我们只需要在？处加上父节点绑定即可，如下：</p>
-<pre class=" language-java"><code class="language-java">
-<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span>T value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-root <span class="token operator">=</span> <span class="token function">nodeAdd</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">/**
-* @param currRoot 当前根节点
-* @param newValue 新插入元素
-*/</span>
-<span class="token keyword">private</span> Node <span class="token function">nodeAdd</span><span class="token punctuation">(</span>Node currRoot<span class="token punctuation">,</span> T newValue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-<span class="token keyword">if</span><span class="token punctuation">(</span>currRoot <span class="token operator">==</span> null<span class="token punctuation">)</span><span class="token punctuation">{</span>
-size<span class="token operator">++</span><span class="token punctuation">;</span>
-<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span>newValue<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">if</span> <span class="token punctuation">(</span>currRoot<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">compareTo</span><span class="token punctuation">(</span>newValue<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//左插</span>
-currRoot<span class="token punctuation">.</span>left <span class="token operator">=</span> <span class="token function">nodeAdd</span><span class="token punctuation">(</span>currRoot<span class="token punctuation">.</span>left<span class="token punctuation">,</span> newValue<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//递归</span>
-<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>currRoot<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">compareTo</span><span class="token punctuation">(</span>newValue<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//右插</span>
-currRoot<span class="token punctuation">.</span>right <span class="token operator">=</span> <span class="token function">nodeAdd</span><span class="token punctuation">(</span>currRoot<span class="token punctuation">.</span>right<span class="token punctuation">,</span> newValue<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//递归</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">return</span> currRoot<span class="token punctuation">;</span>
-
-<span class="token punctuation">}</span></code></pre>
-<h3 id="2-4-遍历：-前中后序-遍历粗浅理解，以及递归实现"><a href="#2-4-遍历：-前中后序-遍历粗浅理解，以及递归实现" class="headerlink" title="2.4.遍历：(前中后序)遍历粗浅理解，以及递归实现"></a>2.4.遍历：(前中后序)遍历粗浅理解，以及递归实现</h3><p>先中后序遍历主要是根据访问根节点时机来进行的，什么意思？</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNbRwly1fxlltzuvqcj30uc0foao8.jpg" alt></p>
-<p>前序就是先访问根节点，再访问左节点（递归左子树），然后访问右节点（递归右子树）；<br>中序就是先访问左节点（递归左子树），再访问根节点，然后访问右节点（递归右子树）；<br>后序就是先访问右节点（递归右子树），再访问左节点（递归左子树），然后访问根节点；</p>
-<p><strong>等于就是先序就是先访问根，中序就是根在中间，后续就是根在最后，且左子树永远要比右子树更优先遍历；</strong></p>
-<p>贴上代码：</p>
-<pre class=" language-java"><code class="language-java">
-
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BinarySearchTree</span><span class="token operator">&lt;</span>T <span class="token keyword">extends</span> <span class="token class-name">Comparable</span><span class="token operator">></span> <span class="token punctuation">{</span>
-
-<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-
-<span class="token keyword">class</span> <span class="token class-name">Node</span> <span class="token punctuation">{</span>
-<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span>T value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token punctuation">}</span>
-
-
-<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">nodeAdd</span><span class="token punctuation">(</span>Node currRoot<span class="token punctuation">,</span> T newValue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">/**
-* 暴露给用户
-*/</span>
-<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">traverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<span class="token function">traversePre</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">/**
-* 先序遍历
-*/</span>
-<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">traversePre</span><span class="token punctuation">(</span>Node node<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span>node <span class="token operator">==</span> null<span class="token punctuation">)</span>
-<span class="token keyword">return</span><span class="token punctuation">;</span>
-
-System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//访问元素</span>
-<span class="token function">traversePre</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">traversePre</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">return</span> <span class="token function">getLeftMost</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 
 <span class="token comment" spellcheck="true">/**
-* 中序遍历
+* 如果是，那么一路往父节点方向回溯，直到找到某一个父节点(ParentA)是其自己父节点(ParentA’s Fathter)的左子树，
+* 那么这个ParentA’s Fathter就是当前节点Node的后继节点
+* @param node
+* @return
 */</span>
-<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">traverseMid</span><span class="token punctuation">(</span>Node node<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">private</span> Node <span class="token function">getParentFather</span><span class="token punctuation">(</span>Node node<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span>null <span class="token operator">!=</span> node<span class="token punctuation">.</span>parent<span class="token punctuation">.</span>parent<span class="token punctuation">.</span>left <span class="token operator">&amp;&amp;</span> node<span class="token punctuation">.</span>parent<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">compareTo</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>parent<span class="token punctuation">.</span>parent<span class="token punctuation">.</span>left<span class="token punctuation">.</span>value<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token keyword">return</span> node<span class="token punctuation">.</span>parent<span class="token punctuation">.</span>parent<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="token keyword">if</span> <span class="token punctuation">(</span>node <span class="token operator">==</span> null<span class="token punctuation">)</span>
-<span class="token keyword">return</span><span class="token punctuation">;</span>
-
-<span class="token function">traversePre</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
-System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//访问元素</span>
-<span class="token function">traversePre</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">return</span> <span class="token function">getParentFather</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>parent<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 
-<span class="token comment" spellcheck="true">/**
-* 后序遍历
-*/</span>
-<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">traverseAfter</span><span class="token punctuation">(</span>Node node<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-<span class="token keyword">if</span> <span class="token punctuation">(</span>node <span class="token operator">==</span> null<span class="token punctuation">)</span>
-<span class="token keyword">return</span><span class="token punctuation">;</span>
-
-<span class="token function">traversePre</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">traversePre</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
-System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//访问元素</span>
-<span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h3 id="2-5-验证测试"><a href="#2-5-验证测试" class="headerlink" title="2.5.验证测试"></a>2.5.验证测试</h3><p>在客户端内添加一波元素看看效果；</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BstTest</span> <span class="token punctuation">{</span>
-
-<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+Client测试代码：
 
 BinarySearchTree bst <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BinarySearchTree</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+bst<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+bst<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">29</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+bst<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+bst<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 bst<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-bst<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+bst<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 bst<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-bst<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-bst<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-bst<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-bst<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+bst<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">44</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+bst<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">77</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+bst<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">82</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+bst<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 bst<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+bst<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+bst<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+bst<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">13</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 bst<span class="token punctuation">.</span><span class="token function">traverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
-<p>推测一下数据应该有的样子，然后再看输出的结果对不对的上；</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fxll4e1q30j30tc1r40vk.jpg" alt></p>
-<p>打印结果：5,1,3,6,7,11</p>
-<pre class=" language-java"><code class="language-java">value <span class="token operator">==</span> <span class="token number">5</span>：：：left value <span class="token operator">==</span> 1__right value <span class="token operator">==</span> <span class="token number">6</span>
-value <span class="token operator">==</span> <span class="token number">1</span>：：：left value <span class="token operator">==</span>  null __right value <span class="token operator">==</span> <span class="token number">3</span>
-value <span class="token operator">==</span> <span class="token number">3</span>：：：left value <span class="token operator">==</span>  null __right value <span class="token operator">==</span>  null 
-value <span class="token operator">==</span> <span class="token number">6</span>：：：left value <span class="token operator">==</span>  null __right value <span class="token operator">==</span> <span class="token number">7</span>
-value <span class="token operator">==</span> <span class="token number">7</span>：：：left value <span class="token operator">==</span>  null __right value <span class="token operator">==</span> <span class="token number">11</span>
-value <span class="token operator">==</span> <span class="token number">11</span>：：：left value <span class="token operator">==</span>  null __right value <span class="token operator">==</span>  null </code></pre>
-<p>可以看见结果是能对的上的，但是，这只是最简单的理解；</p>
-<h2 id="3-深入理解BST树的遍历"><a href="#3-深入理解BST树的遍历" class="headerlink" title="3.深入理解BST树的遍历"></a>3.深入理解BST树的遍历</h2><h3 id="3-1-（前中后序）遍历深入理解"><a href="#3-1-（前中后序）遍历深入理解" class="headerlink" title="3.1.（前中后序）遍历深入理解"></a>3.1.（前中后序）遍历深入理解</h3><p>之前讨论的前中后序遍历重点关注的只是结果，这一小节准备揪出这个遍历的本质，即当我们去遍历这个树时，每个节点具体的访问顺序是怎样的，这个就有点像是程序debug打断点，一步步的走；</p>
-<p>还是这个树：<br><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fxll4e1q30j30tc1r40vk.jpg" alt></p>
-<p>先说结论：在递归的前提下，每个节点都会被访问三次，用先序遍历举例，这个树实际节点访问的顺序是；</p>
-<p>⑤①①③③③①⑤⑥⑥⑦⑦⑪⑪⑪⑦⑥⑤</p>
-<p>一共6个元素，每个元素访问3次，总共18个步骤，接下来将一个个分析每一步的理由：</p>
-<p>⑤：第一个元素开始，访问5，<br>①：由于是先序（后面将不再强调先序），访问5的左子树，于是来到1<br>①：1接着访问1点左子树，由于1没有左子树（null），于是返回1<br>③：接着访问1的右子树，就来到了3<br>③：接着访问3的左子树，为空，返回3<br>③：接着访问3的右子树，为空，返回3<br>①：3访问完了，返回父亲节点，也就是1<br>⑤：1访问完了，返回父亲节点，也就是树根节点5<br>⑥：5的左子树访问完了，于是访问5的右子树，于是来到6<br>⑥：6访问左子树，发现为空，返回自己，也就是6<br>⑦：6访问右子树，于是来到7<br>⑦：7访问左子树，发现为空，于是返回自己，也就是7<br>⑪：7访问右子树，于是来到11<br>⑪：11访问自己的左子树，发现为空，返回自己，也就是11<br>⑪：11访问自己的右子树，发现为空，返回自己，也就是11<br>⑦：11遍历完成之后，返回自己的父亲节点，也就是7<br>⑥：7遍历完成之后，返回自己的父亲节点，也就是6<br>⑤：6遍历完成之后，返回自己的父亲节点，也就是树根节点5，整个遍历结束；</p>
-<p>在理解了每个节点的具体访问步骤之后，我们知道每个元素都会访问3次，也就是说，每个节点都会第一次被访问，第二次被访问，第三次被访问；</p>
-<p>而先序列遍历就是在节点第一次被访问的时候进行数据处理（比如打印自己的值）；<br>中序遍历就是在节点第二次被访问的时候进行数据处理，同样后序遍历就是在节点第三次被访问的时候进行数据处理，<strong>所以我们发现不同的遍历方式出来的值顺序不一样</strong>；</p>
-<p>知道了先序的这个流程之后，中后序根这个一个意思，就不写了，验证这个可以用后面贴出的Demo代码进行测试,这里也不赘述了；</p>
-<h3 id="3-2-（前中后序）遍历的非递归实现"><a href="#3-2-（前中后序）遍历的非递归实现" class="headerlink" title="3.2.（前中后序）遍历的非递归实现"></a>3.2.（前中后序）遍历的非递归实现</h3><p>非递归实现的核心思想就是用”循环+栈来替代递归”；<br>栈是后进先出，比如一个最简单的树：</p>
-<pre class=" language-java"><code class="language-java">⑤
-<span class="token operator">/</span>\
-①  ⑦</code></pre>
-<p>用先序举例，访问结果是517，那么stack实现的流程就是：</p>
-<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//伪码</span>
-stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>理解了这一层之后来写代码：</p>
-<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
-* 先序遍历，非递归
-*/</span>
-<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">traversePre</span><span class="token punctuation">(</span>Node rootnode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+BinarySearchTree<span class="token operator">&lt;</span>Integer<span class="token operator">></span><span class="token punctuation">.</span>Node qNode <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BinarySearchTree</span><span class="token operator">&lt;</span>Integer<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Integer</span><span class="token punctuation">(</span><span class="token number">13</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+BinarySearchTree<span class="token punctuation">.</span>Node successorNode <span class="token operator">=</span> bst<span class="token punctuation">.</span><span class="token function">getSuccessorNode</span><span class="token punctuation">(</span>bst<span class="token punctuation">.</span><span class="token function">getOnEle</span><span class="token punctuation">(</span>qNode<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>qNode<span class="token punctuation">.</span>value <span class="token operator">+</span> <span class="token string">" 的后继节点是：  "</span><span class="token operator">+</span>successorNode<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//        bst.remove(new Integer(13));</span>
+bst<span class="token punctuation">.</span><span class="token function">traverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-Stack<span class="token operator">&lt;</span>Node<span class="token operator">></span> stack <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Stack</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>rootnode<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span>stack<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-Node currNode <span class="token operator">=</span> stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">if</span><span class="token punctuation">(</span>currNode <span class="token operator">==</span> null<span class="token punctuation">)</span>
-<span class="token keyword">return</span><span class="token punctuation">;</span>
-<span class="token keyword">else</span>
-System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>currNode<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//访问元素</span>
-
-<span class="token keyword">if</span><span class="token punctuation">(</span>null <span class="token operator">!=</span> currNode<span class="token punctuation">.</span>right<span class="token punctuation">)</span>
-stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>currNode<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">if</span><span class="token punctuation">(</span>null <span class="token operator">!=</span> currNode<span class="token punctuation">.</span>left<span class="token punctuation">)</span>
-stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>currNode<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token punctuation">}</span></code></pre>
-<p>根据之前的结果结合这个代码来反推算一算：⑤①③⑥⑦⑪</p>
-<p><strong>第一趟：</strong></p>
-<ul>
-<li>5先入栈</li>
-<li>stack不为空，进入循环，从stack内拿出5，打印5（访问数据）</li>
-<li>5的right，6，不为空，入栈</li>
-<li>5的left，1，不为空，入栈</li>
-<li>本趟结果：⑤</li>
-<li>栈内情况：<pre class=" language-java"><code class="language-java"><span class="token number">1</span>
-<span class="token number">6</span></code></pre>
-</li>
-</ul>
-<p><strong>第二趟：</strong></p>
-<ul>
-<li>stack不为空，进入循环，从stack内拿，不为空，拿到1，打印</li>
-<li>1的right，3，不为空，入栈</li>
-<li>1的left，为空，什么都不做</li>
-<li>本趟结果：①</li>
-<li>栈内情况：<pre class=" language-java"><code class="language-java"><span class="token number">3</span>
-<span class="token number">6</span></code></pre>
-</li>
-</ul>
-<p><strong>第三趟：</strong></p>
-<ul>
-<li>stack不为空，进入循环，从stack内拿，不为空，拿到3，打印</li>
-<li>3的right，为空，什么都不做</li>
-<li>3的left，为空，什么都不做</li>
-<li>本趟结果：③</li>
-<li>栈内情况：<pre class=" language-java"><code class="language-java"><span class="token number">6</span></code></pre>
-</li>
-</ul>
-<p><strong>第四趟：</strong></p>
-<ul>
-<li>stack不为空，进入循环，从stack内拿，不为空，拿到6，打印</li>
-<li>6的right，7，不为空，入栈</li>
-<li>6的left，为空，什么都不做</li>
-<li>本趟结果：⑥</li>
-<li>栈内情况：<pre class=" language-java"><code class="language-java"><span class="token number">7</span></code></pre>
-</li>
-</ul>
-<p><strong>第五趟：</strong></p>
-<ul>
-<li>stack不为空，进入循环，从stack内拿，不为空，拿到7，打印</li>
-<li>7的right，11，不为空，入栈</li>
-<li>7的left，为空，什么都不做</li>
-<li>本趟结果：⑦</li>
-<li>栈内情况：<pre class=" language-java"><code class="language-java"><span class="token number">11</span></code></pre>
-</li>
-</ul>
-<p><strong>第六趟：</strong></p>
-<ul>
-<li>stack不为空，进入循环，从stack内拿，不为空，拿到11，打印</li>
-<li>11的right，为空，什么都不做</li>
-<li>11的left，为空，什么都不做</li>
-<li>本趟结果：⑪</li>
-<li>栈内情况：<pre class=" language-java"><code class="language-java">无</code></pre>
-</li>
-</ul>
-<p><strong>第七趟：</strong></p>
-<ul>
-<li>stack为空，结束循环；</li>
-</ul>
-<p>对比打印结果一致：</p>
-<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//递归先序</span>
-value <span class="token operator">==</span> <span class="token number">5</span>：：：left value <span class="token operator">==</span> 1__right value <span class="token operator">==</span> <span class="token number">6</span>
-value <span class="token operator">==</span> <span class="token number">1</span>：：：left value <span class="token operator">==</span>  null __right value <span class="token operator">==</span> <span class="token number">3</span>
-value <span class="token operator">==</span> <span class="token number">3</span>：：：left value <span class="token operator">==</span>  null __right value <span class="token operator">==</span>  null 
-value <span class="token operator">==</span> <span class="token number">6</span>：：：left value <span class="token operator">==</span>  null __right value <span class="token operator">==</span> <span class="token number">7</span>
-value <span class="token operator">==</span> <span class="token number">7</span>：：：left value <span class="token operator">==</span>  null __right value <span class="token operator">==</span> <span class="token number">11</span>
-value <span class="token operator">==</span> <span class="token number">11</span>：：：left value <span class="token operator">==</span>  null __right value <span class="token operator">==</span>  null 
-
-<span class="token comment" spellcheck="true">//非递归先序</span>
-value <span class="token operator">==</span> <span class="token number">5</span>：：：left value <span class="token operator">==</span> 1__right value <span class="token operator">==</span> <span class="token number">6</span>
-value <span class="token operator">==</span> <span class="token number">1</span>：：：left value <span class="token operator">==</span>  null __right value <span class="token operator">==</span> <span class="token number">3</span>
-value <span class="token operator">==</span> <span class="token number">3</span>：：：left value <span class="token operator">==</span>  null __right value <span class="token operator">==</span>  null 
-value <span class="token operator">==</span> <span class="token number">6</span>：：：left value <span class="token operator">==</span>  null __right value <span class="token operator">==</span> <span class="token number">7</span>
-value <span class="token operator">==</span> <span class="token number">7</span>：：：left value <span class="token operator">==</span>  null __right value <span class="token operator">==</span> <span class="token number">11</span>
-value <span class="token operator">==</span> <span class="token number">11</span>：：：left value <span class="token operator">==</span>  null __right value <span class="token operator">==</span>  null </code></pre>
-<p>在验证了这个流程之后，中后序，无非就是调整入栈出栈时机的问题；</p>
-<p><strong>总结一下就是：非递归遍历树借助了辅助容器（stack）来实现的，当要压进一个元素的意思就是我们即将访问这个元素；然后压栈的时候主要它先进后出的特性，顺序要反着压；</strong></p>
-<p><strong>另外，我在想一个问题，bst树遍历非递归实现有何实际意义？</strong><br>后来度娘了一波，似乎是和性能有关系，意思就是递归耗性能：</p>
-<pre class=" language-java"><code class="language-java">递归和非递归只是解决问题的方法的不同，本质还是一样的。
-<span class="token number">2</span><span class="token punctuation">.</span> 递归算法相对于非递归算法来说效率通常都会更低
-<span class="token number">2.1</span> 递归算法会有更多的资源需要压栈和出栈操作（不仅仅是参数，还有函数地址等）
-<span class="token number">2.2</span> 由于编译器对附加的一些栈保护机制会导致递归执行的更加低效
-<span class="token number">3</span><span class="token punctuation">.</span> 使用循环代替递归算法，通常可以获得更好的执行效率和空间效率，在二叉树层次较深的情况下，采用非递归方式遍历能够有效的提升遍历的性能。</code></pre>
-<h2 id="4-Demo"><a href="#4-Demo" class="headerlink" title="4.Demo"></a>4.Demo</h2><p><a href="https://github.com/zj614android/designPattern/tree/master/app/src/main/java/com/zj/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91/bst" target="_blank" rel="noopener">https://github.com/zj614android/designPattern/tree/master/app/src/main/java/com/zj/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91/bst</a></p>
+输出结果：
+<span class="token number">13</span> 的后继节点是：  <span class="token number">29</span>
+</code></pre>
 
       
     </div>
@@ -885,6 +585,22 @@ value <span class="token operator">==</span> <span class="token number">11</span
       
       
 
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/06/bst-tree_introduce/" rel="next" title="bst-tree_introduce">
+                <i class="fa fa-chevron-left"></i> bst-tree_introduce
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
       
@@ -952,7 +668,7 @@ value <span class="token operator">==</span> <span class="token number">11</span
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1028,7 +744,7 @@ value <span class="token operator">==</span> <span class="token number">11</span
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-什么是BST树"><span class="nav-number">1.</span> <span class="nav-text">1.什么是BST树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-手写一个基本的BST树"><span class="nav-number">2.</span> <span class="nav-text">2.手写一个基本的BST树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-定义基本节点"><span class="nav-number">2.1.</span> <span class="nav-text">2.1.定义基本节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-add元素流程"><span class="nav-number">2.2.</span> <span class="nav-text">2.2.add元素流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-add流程优化"><span class="nav-number">2.3.</span> <span class="nav-text">2.3.add流程优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-遍历：-前中后序-遍历粗浅理解，以及递归实现"><span class="nav-number">2.4.</span> <span class="nav-text">2.4.遍历：(前中后序)遍历粗浅理解，以及递归实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-验证测试"><span class="nav-number">2.5.</span> <span class="nav-text">2.5.验证测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-深入理解BST树的遍历"><span class="nav-number">3.</span> <span class="nav-text">3.深入理解BST树的遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-（前中后序）遍历深入理解"><span class="nav-number">3.1.</span> <span class="nav-text">3.1.（前中后序）遍历深入理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-（前中后序）遍历的非递归实现"><span class="nav-number">3.2.</span> <span class="nav-text">3.2.（前中后序）遍历的非递归实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Demo"><span class="nav-number">4.</span> <span class="nav-text">4.Demo</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-前言"><span class="nav-number">1.</span> <span class="nav-text">1.前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-如何寻找后继节点？"><span class="nav-number">2.</span> <span class="nav-text">2.如何寻找后继节点？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-0：这个树："><span class="nav-number">2.1.</span> <span class="nav-text">2.0：这个树：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-那么科学的姿势是："><span class="nav-number">2.2.</span> <span class="nav-text">2.1.那么科学的姿势是：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-代码怎么写？"><span class="nav-number">3.</span> <span class="nav-text">3.代码怎么写？</span></a></li></ol></div>
             
 
           </div>
