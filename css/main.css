@@ -1764,7 +1764,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #1c5d1a;
+  background: #df55ff;
 }
 .feed-link,
 .chat {
@@ -2126,6 +2126,7 @@ pre .javascript .function {
   position: relative;
   top: 3px;
   left: 20px;
+  display: none;
 }
 @media (max-width: 767px) {
   .page-archive .archive-page-counter {
