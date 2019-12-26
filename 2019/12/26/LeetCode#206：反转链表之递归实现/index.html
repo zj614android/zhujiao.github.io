@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="不废话，直入主题（我是个很直接的人）： 已知单链表，求反转：1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;null 期望效果：null&amp;lt;-1&amp;lt;-2&amp;lt;-3&amp;lt;-4&amp;lt;-5 答题模版：  /**  * Definition for singly-linked list.  * public class ListNode {  *     int val;  *">
+<meta name="keywords" content="leeetCode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode#206：反转链表之递归实现">
+<meta property="og:url" content="http://yoursite.com/2019/12/26/LeetCode#206：反转链表之递归实现/index.html">
+<meta property="og:site_name" content="Red Dragon">
+<meta property="og:description" content="不废话，直入主题（我是个很直接的人）： 已知单链表，求反转：1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;null 期望效果：null&amp;lt;-1&amp;lt;-2&amp;lt;-3&amp;lt;-4&amp;lt;-5 答题模版：  /**  * Definition for singly-linked list.  * public class ListNode {  *     int val;  *">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/410799459pic/pics/master/img/20191205131828.png">
+<meta property="og:updated_time" content="2019-12-26T08:58:43.892Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LeetCode#206：反转链表之递归实现">
+<meta name="twitter:description" content="不废话，直入主题（我是个很直接的人）： 已知单链表，求反转：1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;null 期望效果：null&amp;lt;-1&amp;lt;-2&amp;lt;-3&amp;lt;-4&amp;lt;-5 答题模版：  /**  * Definition for singly-linked list.  * public class ListNode {  *     int val;  *">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/410799459pic/pics/master/img/20191205131828.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/12/26/LeetCode#206：反转链表之递归实现/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>LeetCode#206：反转链表之递归实现 | Red Dragon</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+<!--     <a href="https://github.com/zj614android"><img width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_left_red_aa0000.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a> -->
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Red Dragon</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-归档">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-标签">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-分类">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-关于">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/26/LeetCode#206：反转链表之递归实现/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Red Dragon">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avt_img.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Red Dragon">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">LeetCode#206：反转链表之递归实现
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-12-26 12:53:38 / Modified: 16:58:43" itemprop="dateCreated datePublished" datetime="2019-12-26T12:53:38+08:00">2019-12-26</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构-算法/" itemprop="url" rel="index"><span itemprop="name">数据结构/算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>不废话，直入主题（我是个很直接的人）：</p>
+<p><strong>已知单链表，求反转：</strong><br>1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;null</p>
+<p><strong>期望效果：</strong><br>null&lt;-1&lt;-2&lt;-3&lt;-4&lt;-5</p>
+<p><strong>答题模版：</strong></p>
+<pre class=" language-java"><code class="language-java">
+<span class="token comment" spellcheck="true">/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> ListNode <span class="token function">reverseList</span><span class="token punctuation">(</span>ListNode head<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><strong>冷静分析：</strong>(自行脑补熊猫头抽烟表情包)<br>我们要反转，那么涉及到俩个元素，当前节点currentNode，和currentNode.next节点，我们主要做的，是将curremtNode.next.next = currnetNode。<br>结合递归，我们肯定是从1递归到2，从2递归到3这样，举个例:</p>
+<pre class=" language-java"><code class="language-java">
+<span class="token function">reverseList</span> <span class="token punctuation">(</span>currentNode <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   saveNextNode <span class="token operator">=</span> currentNode<span class="token punctuation">.</span>mext <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+   <span class="token function">reverseList</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">reverseList</span> <span class="token punctuation">(</span>currentNode <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   saveNextNode <span class="token operator">=</span> currentNode<span class="token punctuation">.</span>mext <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+   <span class="token function">reverseList</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">reverseList</span> <span class="token punctuation">(</span>currentNode <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   saveNextNode <span class="token operator">=</span> currentNode<span class="token punctuation">.</span>mext <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+   <span class="token function">reverseList</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">.</span>next <span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">reverseList</span> <span class="token punctuation">(</span>currentNode <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+   saveNextNode <span class="token operator">=</span> currentNode<span class="token punctuation">.</span>mext <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+   <span class="token function">reverseList</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</code></pre>
+<p>然后加上：递归返回条件，就是12345顺序递归那个条件：</p>
+<pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">//退出条件: &lt; 1 - 2 - 3 - 4 - 5 - null ></span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>currhead <span class="token operator">==</span> null <span class="token operator">||</span> currhead<span class="token punctuation">.</span>next <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> currhead<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span></code></pre>
+<p>然后我们再加上这行：核心替换逻辑</p>
+<pre class=" language-java"><code class="language-java">   saveNextNode<span class="token punctuation">.</span>next <span class="token operator">=</span> currentNode<span class="token punctuation">;</span></code></pre>
+<p>最后再加上：斩断老的指向逻辑：</p>
+<pre class=" language-java"><code class="language-java">   currentNode<span class="token punctuation">.</span>next <span class="token operator">=</span> null<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//斩断老的指向</span></code></pre>
+<p>于是有代码：</p>
+<pre class=" language-java"><code class="language-java">  <span class="token keyword">private</span> <span class="token keyword">static</span> ListNode <span class="token function">reverse</span><span class="token punctuation">(</span>ListNode currhead<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token comment" spellcheck="true">//退出条件: &lt; 1 - 2 - 3 - 4 - 5 - null ></span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>currhead <span class="token operator">==</span> null <span class="token operator">||</span> currhead<span class="token punctuation">.</span>next <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> currhead<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">//12345</span>
+        ListNode nextNode <span class="token operator">=</span> currhead<span class="token punctuation">.</span>next<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//保存下一个节点 4</span>
+        ListNode newHead <span class="token operator">=</span> <span class="token function">reverse</span><span class="token punctuation">(</span>nextNode<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//递归 5</span>
+        nextNode<span class="token punctuation">.</span>next <span class="token operator">=</span> currhead<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//连上头与递归部分</span>
+        currhead<span class="token punctuation">.</span>next <span class="token operator">=</span> null<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//调整尾部</span>
+        <span class="token keyword">return</span> newHead<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//返回头节点</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>最后解释：<br>这个newHead，是返回到新的头节点，细品这个newHead，其实他就在第一次的时候用到了，之后对链表对改变并没有再用到这个newHead，只是一直传递到新的结尾处。至于为什么要返回这个头节点，只能说是惯例吧，一个链表肯定是先知道其head才好next下去嘛。</p>
+<p><img src="https://raw.githubusercontent.com/410799459pic/pics/master/img/20191205131828.png" alt></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/leeetCode/" rel="tag"># leeetCode</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/26/LeetCode#237：删除链表中的节点/" rel="next" title="LeetCode_237_删除链表中的节点">
+                <i class="fa fa-chevron-left"></i> LeetCode_237_删除链表中的节点
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/26/AVL树/" rel="prev" title="AVL树">
+                AVL树 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avt_img.jpg" alt="Red Dragon">
+            
+              <p class="site-author-name" itemprop="name">Red Dragon</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Red Dragon</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
